@@ -1,23 +1,3 @@
-# resource "restapi_object" "proxmox-volume" {
-#   for_each = var.volumes
-#   path = "/api2/json/nodes/${each.value.node}/storage/${each.value.storage_id}/content/"
-
-#   id_attribute = "data"
-
-#   force_new = [each.value.size]
-
-#   data = jsonencode({
-#     filename = "vm-${each.value.vm_id}-${each.key}"
-#     size     = each.value.size
-#     format   = each.value.format
-#     vmid     = each.value.vm_id
-#   })
-
-#   lifecycle {
-#     prevent_destroy = false
-#   }
-# }
-
 resource "proxmox_virtual_environment_vm" "data_vm" {
   for_each  = var.nodes
   node_name = each.key
