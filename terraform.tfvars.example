@@ -1,0 +1,26 @@
+proxmox = {
+  name         = "pve"
+  cluster_name = "pve"
+  # Update with the IP address of one of your Proxmox nodes
+  endpoint     = "https://192.168.0.31:8006"
+  insecure     = true
+  username     = "root"
+  # Your API token will be different
+  api_token    = "root@pam!terraform=00000000-1111-2222-3333-444444444444"
+}
+
+# This structure describes a 3 node cluster. It will create one VM in each node and one disk in each VM.
+nodes = {
+  pve1 = {
+    volumes = [{size  = 10}],
+    vm_id = 9901
+  }
+  pve2 = {
+    volumes = [{size = 10}],
+    vm_id = 9902
+  }
+  pve3 = {
+    volumes = [{size = 10}]
+    vm_id = 9903
+  }
+}
